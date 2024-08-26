@@ -22,8 +22,6 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
   #learn_rate
   #learn_rate <- 0.00001
 
-
-
   #iteration numbers
   #iter <- 100
 
