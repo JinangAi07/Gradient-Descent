@@ -1,0 +1,17 @@
+Package: GradientDescent
+Type: Package
+Title: Solving Univariate Linear Regression and Multivariate Linear Regression with Gradient Descent
+Version: 0.1.0
+Author: Jinang.Ai
+Maintainer: Jinang.Ai <Jinang.Ai@campus.lmu.de>
+Description: Solving Univariate Linear Regression and Multivariate Linear Regression with Gradient Descent.
+Depends: R (>= 3.5.0)
+Imports: 
+    graphics
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+License: GPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
