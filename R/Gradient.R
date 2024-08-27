@@ -7,7 +7,7 @@
 #' @return gradient descent output
 #' @examples
 #' x <- c(137.97, 104.50, 100.00, 124.32, 79.20, 99.00, 124.00, 114.00)
-#' y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 91.00)
+#' y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 81.00)
 #' GD_one_dim(x, y)
 #' GD_one_dim(x, y, iter = 50)
 #' GD_one_dim(x, y, iter = 30)
@@ -48,6 +48,7 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
     }
   }
 
+
   ##visualization
   graphics::par(mfrow = c(1, 3), mar = c(5, 4, 4, 2) + 0.1)
 
@@ -63,6 +64,8 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
   plot(y, type = "o", col = "indianred", pch = 19)
   graphics::lines(pred, type = "o", col = "steelblue", pch = 19)
 
+  # Return final loss for comparison
+  return(list(final_loss = mse[iter + 1], mse = mse))
 }
 
 
@@ -77,7 +80,7 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
 #' x1 <- c(137.97, 104.50, 100.00, 124.32, 79.20, 99.00, 124.00, 114.00)
 #' x2 <- c(3, 2, 2, 3, 1, 2, 3, 2)
 #' x <- cbind(x1, x2)
-#' y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 91.00)
+#' y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 81.00)
 #' GD_multi_dim(x, y)
 #' GD_multi_dim(x, y, iter = 200)
 #' GD_multi_dim(x, y, iter = 300, display_step = 25)
@@ -139,5 +142,7 @@ GD_multi_dim <- function(x, y, learn_rate = 0.001, iter = 500, display_step = 50
   graphics::lines(PRED, pch = 19)
   graphics::lines(y, pch = 19)
 
+  # Return final loss for comparison
+  return(list(final_loss = mse[iter + 1], mse = mse))
 }
 

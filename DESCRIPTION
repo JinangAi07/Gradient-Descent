@@ -4,9 +4,7 @@ Title: Solving Univariate Linear Regression and Multivariate Linear Regression w
 Version: 0.1.0
 Author: Jinang.Ai
 Maintainer: Jinang.Ai <Jinang.Ai@campus.lmu.de>
-Description: This package includes two functions to implement linear regression using gradient descent for both one-dimensional and multi-dimensional data. 
-The GD_one_dim function adjusts weight and bias to fit a linear model to a single variable, while GD_multi_dim handles multiple variables using matrix operations. 
-Both provide visualizations of the loss and predictions, making them useful for analyzing model performance and convergence.
+Description: This package includes two functions to implement linear regression using gradient descent for both one-dimensional and multi-dimensional data. The GD_one_dim function adjusts weight and bias to fit a linear model to a single variable, while GD_multi_dim handles multiple variables using matrix operations. Both provide visualizations of the loss and predictions, making them useful for analyzing model performance and convergence.
 Depends: R (>= 3.5.0)
 Imports: 
     graphics
