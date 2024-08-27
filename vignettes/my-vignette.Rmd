@@ -1,5 +1,5 @@
 ---
-title: "my-vignette"
+title: "An Introduction to the gradientDescent Package"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{my-vignette}
