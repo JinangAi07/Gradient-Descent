@@ -19,3 +19,92 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(GradientDescent)
 ```
+
+
+## Gradient descent discription
+
+**Gradient descent** is a method for unconstrained mathematical optimization. It is a first-order iterative algorithm for finding a local minimum of a differentiable multivariate function.
+
+The idea is to take repeated steps in the opposite direction of the gradient (or approximate gradient) of the function at the current point, because this is the direction of steepest descent. Conversely, stepping in the direction of the gradient will lead to a local maximum of that function; the procedure is then known as gradient ascent. It is particularly useful in machine learning for minimizing the cost or loss function.[1] Gradient descent should not be confused with local search algorithms, although both are iterative methods for optimization.
+
+see <https://en.wikipedia.org/wiki/Gradient_descent>.
+
+## Pacakge functions 1 -- one-dimensional linear regression
+
+The GD_one_dim function performs gradient descent on a simple one-dimensional linear regression problem. Let’s explore its usage with an example.
+
+```{r}
+x <- c(137.97, 104.50, 100.00, 124.32, 79.20, 99.00, 124.00, 114.00)
+y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 81.00)
+```
+
+
+```{r}
+GD_one_dim(x, y)
+```
+
+
+This function will also generate three plots (if save_plots = TRUE):
+
+A scatter plot of the data points and the fitted regression line.
+A plot of the loss function as it decreases over the iterations.
+A plot comparing the predicted values against the actual target values.
+This function provides insight into how gradient descent adjusts the weights (w) and biases (b) to minimize the mean squared error (MSE).
+
+
+## Pacakge functions 2 -- multiple-dimensional linear regression
+
+The GD_multi_dim function extends gradient descent to a multi-dimensional setting where there are multiple predictors. Here's an example:
+
+
+```{r}
+x1 <- c(137.97, 104.50, 100.00, 124.32, 79.20, 99.00, 124.00, 114.00)
+x2 <- c(3, 2, 2, 3, 1, 2, 3, 2)
+x0 <- cbind(x1, x2)
+y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 81.00)
+```
+
+
+```{r}
+GD_multi_dim(x0, y)
+```
+
+
+This function will also generate two plots (if save_plots = TRUE):
+
+A plot of the loss function across the iterations.
+A plot comparing the predicted values against the actual target values for all data points.
+By normalizing the input data internally, GD_multi_dim ensures that the gradient descent algorithm performs efficiently across different scales of predictors.
+
+## Comparison with Linear Models
+For both GD_one_dim and GD_multi_dim, it’s important to validate the results against a standard linear model using the lm() function in R. Here’s how you can compare the final loss value:
+
+```{r}
+# For one-dimensional case
+model_lm_one <- lm(y ~ x)
+predictions_lm_one <- predict(model_lm_one)
+loss_lm_one <- mean((y - predictions_lm_one)^2) / 2
+
+cat("Final loss from gradient descent (one-dim): ", 78.945599, "\n")
+cat("Final loss from linear model (one-dim): ", loss_lm_one, "\n")
+
+# For multi-dimensional case
+model_lm_multi <- lm(y ~ x1 + x2)
+predictions_lm_multi <- predict(model_lm_multi)
+loss_lm_multi <- mean((y - predictions_lm_multi)^2) / 2
+
+cat("Final loss from gradient descent (multi-dim): ", 65.37714, "\n")
+cat("Final loss from linear model (multi-dim): ", loss_lm_multi, "\n")
+```
+
+
+In most cases, you should observe that the loss from the gradient descent algorithm closely approximates the loss from the linear model (lm()), demonstrating the accuracy of the gradient descent implementation.
+
+## Conclusion
+The GradientDescent package provides a hands-on approach to understanding and visualizing the gradient descent algorithm in linear regression. It’s a great educational tool for students and researchers looking to explore the fundamentals of optimization in machine learning.
+
+Try out different learning rates and iteration counts to see how they affect convergence and model performance.
+
+For more advanced regression tasks, consider customizing the learning rate, iteration steps, and data preprocessing within the functions to achieve better results.
+
+Happy experimenting with gradient descent!
