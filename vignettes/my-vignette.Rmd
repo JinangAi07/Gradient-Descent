@@ -1,8 +1,10 @@
 ---
 title: "An Introduction to the gradientDescent Package"
+author: "Jinang Ai"
+date: "27.08.2024"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my-vignette}
+  %\VignetteIndexEntry{An Introduction to the gradientDescent Package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
