@@ -2,7 +2,7 @@
 This package includes two functions to implement linear regression using gradient descent for both one-dimensional and multi-dimensional data.
 
 ## Introduction to Gradient Descent
-Gradient descent is one of the most commonly used optimization algorithms in machine learning and neural networks. Its primary goal is to minimize the error between the predicted results and the actual results by iteratively adjusting the model's parameters. Gradient descent is a crucial technique for training machine learning models and deep learning networks.
+Gradient descent is one of the most commonly used optimization algorithms in machine learning and neural networks. Its primary goal is to minimize the error between the predicted results and the actual results by iteratively adjusting the model's parameters. 
 
 The core idea of gradient descent is to calculate the derivative (gradient) of the loss function with respect to the model's parameters, then update the parameters in the direction opposite to the gradient. This process is repeated iteratively until the algorithm converges to the optimal solution.
 
@@ -13,10 +13,10 @@ $\[
 \]$
 
 Where:
-- $\(\theta\)$ represents the model parameters.
-- $\(\alpha\)$ is the learning rate, controlling the step size of each update.
-- $\(J(\theta)\)$ is the loss function, used to measure prediction error.
-- $\(\nabla_{\theta} J(\theta)\)$ denotes the gradient of the loss function with respect to the parameters.
+- $\theta\$ represents the model parameters.
+- $\alpha\$ is the learning rate, controlling the step size of each update.
+- $J(\theta)\$ is the loss function, used to measure prediction error.
+- $\nabla_{\theta} J(\theta)\$ denotes the gradient of the loss function with respect to the parameters.
 
 Through multiple iterations, gradient descent gradually finds the parameter values that minimize the loss function, thus improving the accuracy of the model's predictions.
 
