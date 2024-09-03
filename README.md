@@ -93,10 +93,15 @@ Loss=\frac{1}{2}(Y-\hat{Y})^2=\frac{1}{2}(Y-XW)^2
 
 The **formula** for weight update algorithm for this model:
 ```math
-w^{(k+1)}~=~w^{(k)}~-~\eta\sum_{i=1}^{n}x_i(wx_i+b-y_i)
+W^{(k+1)}~=~W^{(k)}~-~\eta\frac{\partial Loss(W)}{\partial W}
 ```
+with:
 ```math
-b^{(k+1)}~=~b^{(k)}~-~\eta\sum_{i=1}^{n}(wx_i+b-y_i)
+\frac{\partial Loss}{\partial W}=X^T(XW-Y)
+```
+then equal to:
+```math
+W^{(k+1)}~=~W^{(k)}~-~\eta X^T(XW-Y)
 ```
 
 This function implements multi-dimensional linear regression for multiple features (variables). After normalizing the data, it uses matrix operations to perform gradient descent, updating the weight matrix $W$. Users can set the learning rate, the number of iterations, and the display interval. The function outputs the change in loss during training and plots the comparison between predicted and actual values.
