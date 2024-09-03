@@ -23,12 +23,12 @@ Through multiple iterations, gradient descent gradually finds the parameter valu
 ![Image text](man/figures/gd1.png)
 
 The diagram illustrates this process. The blue curve represents the contour lines (level sets) and the arrows indicate the direction opposite to the gradient at that point. (Note: The gradient direction at a point is perpendicular to the contour lines passing through that point). By following the gradient descent direction, we will eventually reach to the bottom, which is the point where the loss function J is minimized.
-
+***
 ## 2. Linear regression using gradient descent
 In this R package, we focus on the application of gradient descent in both univariate and multivariate functions. To this end, we provide two functions, **GD_one_dim** and **GD_multi_dim**, to implement linear regression and also offer visualizations.
 
 ### 2.1 Convex Function
-Here, we introduce the concept of convex functions to simplify the optimization process, because the minimization problem of a convex function has uniqueness, meaning that a strictly convex function over a convex open set can have at most one local minimum and finding a local minimum on a convex function will also yield a global minimum. 
+The concept of convex functions should to be introduced to simplify the optimization process, because the minimization problem of a convex function has uniqueness, meaning that a strictly convex function over a convex open set can have at most one local minimum and finding a local minimum on a convex function will also yield a global minimum. 
 
 The main **formula** for convex functions of one variable $f(x)$ is as follows: 
 ```math
@@ -107,6 +107,9 @@ W^{(k+1)}~=~W^{(k)}~-~\eta X^T(XW-Y)
 This function implements multi-dimensional linear regression for multiple features (variables). After normalizing the data, it uses matrix operations to perform gradient descent, updating the weight matrix $W$. Users can set the learning rate, the number of iterations, and the display interval. The function outputs the change in loss during training and plots the comparison between predicted and actual values.
 
 Both functions use gradient descent to train the model, making them useful for linear regression tasks with intuitive visualizations to analyze convergence and predictive performance.
+***
+## 3. Vignettes and Tests
+This R package also includes two important components: vignettes and tests, which help us better understand and use the package. In the vignettes, we will learn how the package works through a simple example, as well as the the final output and visualization graphics. In the tests, the outputs of this package are compared another widely-used package 'lm', using data from an open dataset in the [Medical Cost Personal Datasets (kaggle.com)](https://www.kaggle.com/datasets/mirichoi0218/insurance). 
 
-## 3. Others
-This package also contains a vignette, which describe the introduction of two functions and a test which compare the output of this package with another widely-used package 'lm'. 
+***
+Thank you for reading this introduction, hope you have fun with this r package! :wink:
