@@ -8,9 +8,9 @@ The core idea of gradient descent is to calculate the derivative (gradient) of t
 
 The main **formula** for gradient descent is as follows:
 
-$\[
-\theta := \theta - \alpha \cdot \nabla_{\theta} J(\theta)
-\]$
+```math
+[\theta := \theta - \alpha \cdot \nabla_{\theta} J(\theta)]
+```
 
 Where:
 - $\theta\$ represents the model parameters.
@@ -20,7 +20,7 @@ Where:
 
 Through multiple iterations, gradient descent gradually finds the parameter values that minimize the loss function, thus improving the accuracy of the model's predictions.
 
-![Image text](\figure{gd1.png})
+![Image text](man/figures/gd1.png)
 
 The diagram illustrates this process. The blue curve represents the contour lines (level sets) and the arrows indicate the direction opposite to the gradient at that point. (Note: The gradient direction at a point is perpendicular to the contour lines passing through that point). By following the gradient descent direction, we will eventually reach to the bottom, which is the point where the loss function J is minimized.
 
@@ -32,11 +32,21 @@ In this R package, we focus on the application of gradient descent in both univa
 
 Here, we introduce the concept of convex functions to simplify the optimization process, because the minimization problem of a convex function has uniqueness, meaning that a strictly convex function over a convex open set can have at most one local minimum and finding a local minimum on a convex function will also yield a global minimum. 
 
-The essence of gradient descent is to find the extremum and numerical solution of a function. For machine learning algorithms, as long as the loss function can be expressed as a convex function, gradient descent can be used to update the weight vector w at the fastest rate, thereby finding the point where the loss function reaches its minimum.
+The main **formula** for convex functions of one variable $f(x)$ is as follows: 
+```math
+x^{(k+1)}~=~x^{(k)}~-~\eta\frac{df(x)}{dx}
+```
 
-The main **formula** for convex functions of one variable is as follows:
+The main **formula** for convex functions of several variable $f(x,y)$ is as follows: 
+```math
+x^{(k+1)}~=~x^{(k)}~-~\eta\frac{\partial f(x,y)}{\partial x}
+```
 
-The main **formula** for convex functions of several variable is as follows:
+```math
+y^{(k+1)}~=~y^{(k)}~-~\eta\frac{\partial f(x,y)}{\partial y}
+```
+
+The essence of gradient descent is to find the extremum and numerical solution of a function. For machine learning algorithms, as long as the loss function can be expressed as a convex function, gradient descent can be used to update the weight vector $w$ at the fastest rate, thereby finding the point where the loss function reaches its minimum.
 
 ### 2.2 GD_one_dim Function
 This function performs one-dimensional linear regression using gradient descent. It iteratively adjusts the weight w and bias b to minimize the loss function (mean squared error). Users can specify the learning rate, the number of iterations, and the display interval. In each iteration, the function computes the model's predictions and loss, and at the end, it visualizes the regression line, the change in loss over iterations, and the difference between the predicted and actual values.
