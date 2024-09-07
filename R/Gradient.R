@@ -14,58 +14,84 @@
 #' GD_one_dim(x, y, display_step = 5)
 #' GD_one_dim(x, y, iter = 50, display_step = 5)
 #' @export
+
+##Function Definition and Parameters:
 GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10){
+  #'x': Independent variable (input data).
+  #'y': Dependent variable (target values).
+  #'learn_rate': The learning rate for gradient descent, default value '0.00001'.
+  #'iter': The number of iterations for the gradient descent algorithm, default '100'.
+  #'display_step': Defines how often the loss and parameters should be displayed (every '10' iterations by default).
 
+  ##Seed Initialization:
   set.seed(123)
-  ##set the parameter
+  #Sets the seed for reproducibility of results. This ensures that the random processes used in training will produce the same result every time.
 
-  #learn_rate
-  #learn_rate <- 0.00001
-
-  #iteration numbers
-  #iter <- 100
-
-  #Show the effect every 10 iterations
-  #display_step <- 10
-
-  #initialization
+  ##Initialization of Parameters:
   w <- 0.5
   b <- 0.5
+  #'w': Weight for the linear model (starting at '0.5').
+  #'b': Bias term (starting at '0.5').
 
-  ##train the model
+  ##Mean Squared Error (MSE) Storage:
   mse <- numeric(iter + 1)
+  #'mse': Initializes a numeric vector to store the loss at each iteration. The length of the vector is 'iter + 1' because it includes the initial loss (at iteration '0').
 
+  ##Training Loop:
   for (i in 0:iter) {
+  #Starts a loop that runs from iteration '0' to 'iter' (inclusive), which updates the parameters 'w' and 'b' using gradient descent.
+
+    ##Gradient Calculation:
     dL_dw <- mean(x * (w * x + b - y))
     dL_db <- mean(w * x + b - y)
+    #'dL_dw': The gradient of the loss function with respect to the weight 'w'. It measures how much 'w' should be adjusted.
+    #'dL_db': The gradient of the loss function with respect to the bias 'b'. It measures how much 'b' should be adjusted.
+
+    ##Update Parameters:
     w <- w - learn_rate * dL_dw
     b <- b - learn_rate * dL_db
+    #The weight 'w' and bias 'b' are updated using the calculated gradients multiplied by the learning rate.
+
+    ##Prediction and Loss Calculation:
     pred <- w * x + b
     Loss <- mean((y - pred)^2) / 2
     mse[i + 1] <- Loss
+    #'pred': Predictions made by the model using the current values of 'w' and 'b'.
+    #'Loss': Calculates the loss using the mean squared error divided by 2 (standard for squared loss in gradient descent).
+    #'mse[i + 1]': Stores the calculated loss for the current iteration.
+
+    ##Display Information:
     if (i %% display_step == 0) {
       cat(sprintf("i:%i, Loss:%f, w:%f, b:%f\n", i, mse[i + 1], w, b))
     }
+    #Every 'display_step' iterations, the function prints out the iteration number, the current loss, and the values of 'w' and 'b'.
   }
 
 
-  ##visualization
+  ##Visualization:
   graphics::par(mfrow = c(1, 3), mar = c(5, 4, 4, 2) + 0.1)
+  #Sets up the plotting layout to have 1 row and 3 columns. Adjusts the margin sizes.
 
-  #scatterplot
+  ##Scatter Plot of Data and Predictions:
   plot(x, y, col = "indianred", pch = 19)
   graphics::points(x, pred, col = "steelblue", pch = 19)
   graphics::lines(x, pred, col = "steelblue")
+  #Plots the original data points ('x', 'y') in red.
+  #Plots the predicted values ('x', 'pred') in blue.
+  #Adds a line connecting the predicted points.
 
-  #loss
+  ##Loss Plot:
   plot(mse, type = "l", xlab = "iteration numbers", ylab = "Loss")
+  #Plots the loss over the iterations to visualize the convergence of the gradient descent algorithm.
 
-  #differences
+  ##Differences Plot:
   plot(y, type = "o", col = "indianred", pch = 19)
   graphics::lines(pred, type = "o", col = "steelblue", pch = 19)
+  #Plots the actual 'y' values and the predicted 'pred' values, showing how close the model predictions are to the actual values.
 
-  # Return final loss for comparison
+  ##Return final loss for comparison:
   return(list(final_loss = mse[iter + 1], mse = mse))
+  #Returns a list containing the final loss after all iterations and the vector of MSE values throughout training.
 }
 
 
