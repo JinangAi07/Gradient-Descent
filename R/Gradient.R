@@ -80,7 +80,7 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
   #Plots the predicted values ('x', 'pred') in blue.
   #Adds a line connecting the predicted points.
 
-  ##Loss Plot:
+  ##Loss plot:
   plot(mse, type = "l", xlab = "iteration numbers", ylab = "Loss")
   #Plots the loss over the iterations to visualize the convergence of the gradient descent algorithm.
 
@@ -111,15 +111,29 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
 #' GD_multi_dim(x, y, iter = 200)
 #' GD_multi_dim(x, y, iter = 300, display_step = 25)
 #' @export
+##Function Definition and Parameters:
 GD_multi_dim <- function(x, y, learn_rate = 0.001, iter = 500, display_step = 50){
+  #'x': Matrix of independent variables (multi-dimensional input data).
+  #'y': Dependent variable (target values).
+  #'learn_rate': Learning rate for the gradient descent algorithm, default '0.001'.
+  #'iter': Number of iterations for the gradient descent algorithm, default '500'.
+  #'display_step': Determines how often the loss is displayed, default every '50' iterations.
 
+  ##Adding Bias Column:
   x0 <- rep(1, nrow(x))
-  #normalization
+  #Creates a column of ones to represent the bias term 'x0'.
+
+  ##Normalizing Data:
   for (i in 1:ncol(x)) {
     x[, i] <- (x[, i] - min(x[, i])) / (max(x[, i]) - min(x[, i]))
   }
+  #Normalizes each column of 'x' to scale the data between '0' and '1'. This helps the gradient descent converge faster.
 
+  ##Constructing Matrix X by Adding Bias:
   X <- cbind(x0, x)
+  #Combines the bias column 'x0' and the normalized independent variables 'x' to form the matrix 'X'. The first column is all 1s, representing the bias term.
+
+  ##Printing Variables for Debugging:
   print("independent variables")
   print(X)
   cat("
@@ -136,39 +150,59 @@ GD_multi_dim <- function(x, y, learn_rate = 0.001, iter = 500, display_step = 50
 
 ")
   print("Loss and iteration numbers")
+  #Prints the transformed independent variables matrix 'X' and the dependent variable 'Y' for debugging purposes.
 
+  ##Initializing Weights:
   set.seed(123)
-  #learn_rate <- 0.001
-  #iter <- 500
-  #display_step <- 50
   W <- matrix(rep(0.5, ncol(X)))
-
-  ##train the model
   mse <- numeric()
+  #Sets a random seed for reproducibility and initializes the weight matrix 'W' with values of '0.5'. The number of weights corresponds to the number of columns in 'X' (features).
+
+  ##Training Loop:
   for (i in 0:iter) {
-    dL_dW <- t(X) %*% (X %*% W - Y)   # XT(XW-Y)
+  #Starts a loop that runs from iteration '0' to 'iter', which will update the weights 'W'.
+
+    ##Gradient Calculation:
+    dL_dW <- t(X) %*% (X %*% W - Y)
+    #Computes the gradient 'dL_dW', which is the derivative of the loss function with respect to the weights 'W'. The formula used is 'X^T * (X * W - Y)'.
+
+    ##Weight Update:
     W <- W - learn_rate * dL_dW
+    #Updates the weight matrix 'W' using the gradient and the learning rate.
+
+    ##Prediction and Loss Calculation:
     PRED <- X %*% W
     Loss <- mean((Y - PRED)^2) / 2
     mse <- c(mse, Loss)
+    #'PRED': Calculates the predictions using the current weight matrix 'W'.
+    #'Loss': Computes the mean squared error loss and divides by 2 (standard in gradient descent for squared loss).
+    #Stores the current iteration's loss in the 'mse' vector.
+
+    ##Display Loss:
     if (i %% display_step == 0) {
       cat(sprintf("i:%i, Loss:%f\n", i, mse[i + 1]))
     }
+    #Every 'display_step' iterations, prints the current iteration and loss.
   }
 
-  ##visualization
+  ##visualization:
   graphics::par(mfrow = c(1, 2))
-  #Loss
-  plot(mse, type = "l", xlab = "iteration numbers", ylab = "Loss")
+  #Sets up the plotting area to have 1 row and 2 columns for visualization.
 
-  #differences
+  ##Loss Plot:
+  plot(mse, type = "l", xlab = "iteration numbers", ylab = "Loss")
+  #Plots the loss curve over the iterations, showing how the loss decreases as the gradient descent progresses.
+
+  ##Differences Plot:
   PRED <- as.vector(PRED)
   plot(y, col = "indianred", pch = 19)
   graphics::points(PRED, col = "steelblue", pch = 19)
   graphics::lines(PRED, pch = 19)
   graphics::lines(y, pch = 19)
+  #Plots the actual 'y' values and predicted 'PRED' values in red and blue, respectively, showing the differences between model predictions and actual values.
 
-  # Return final loss for comparison
+  ##Return final loss for comparison:
   return(list(final_loss = mse[iter + 1], mse = mse))
+  #Returns a list containing the final loss after all iterations and the vector of loss values ('mse') throughout the training process.
 }
 
