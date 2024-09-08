@@ -90,7 +90,7 @@ The **Simplified Process** for this function:
 
 The **Simplified Flowchart** for this function:
 
-<div align=center><img src="man/figures/fc01.png" width="280" height="430" /></div>
+<div align=center><img src="man/figures/001.png" width="280" height="430" /></div>
 
 To better understand the working principle of the *GD_one_dim* function in this R package, the workflow analysis and flowchart are outlined above. A more detailed step-by-step analysis and explanation can be seen in [Gradient.R](R/Gradient.R "Gradient.R") and [Vignettes](vignettes/my-vignette.Rmd "Vignettes").
 
