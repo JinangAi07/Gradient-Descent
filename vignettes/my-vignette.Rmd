@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to the gradientDescent Package"
+title: "An Introduction to the GradientDescent Package"
 author: "Jinang Ai"
 date: "27.08.2024"
 output: rmarkdown::html_vignette
@@ -25,13 +25,13 @@ library(GradientDescent)
 
 **Gradient descent** is a method for unconstrained mathematical optimization. It is a first-order iterative algorithm for finding a local minimum of a differentiable multivariate function.
 
-The idea is to take repeated steps in the opposite direction of the gradient (or approximate gradient) of the function at the current point, because this is the direction of steepest descent. Conversely, stepping in the direction of the gradient will lead to a local maximum of that function; the procedure is then known as gradient ascent. It is particularly useful in machine learning for minimizing the cost or loss function.[1] Gradient descent should not be confused with local search algorithms, although both are iterative methods for optimization.
+The idea is to take repeated steps in the opposite direction of the gradient (or approximate gradient) of the function at the current point, because this is the direction of steepest descent. Conversely, stepping in the direction of the gradient will lead to a local maximum of that function; the procedure is then known as gradient ascent. It is particularly useful in machine learning for minimizing the cost or loss function. Gradient descent should not be confused with local search algorithms, although both are iterative methods for optimization.
 
-see <https://en.wikipedia.org/wiki/Gradient_descent>.
+More information online see <https://en.wikipedia.org/wiki/Gradient_descent>.
 
 ## Pacakge functions 1 -- one-dimensional linear regression
 
-The GD_one_dim function performs gradient descent on a simple one-dimensional linear regression problem. Let’s explore its usage with an example.
+The GD_one_dim function performs gradient descent on a simple one-dimensional linear regression problem. Let’s explore its usage with a simple example.
 
 ```{r}
 x <- c(137.97, 104.50, 100.00, 124.32, 79.20, 99.00, 124.00, 114.00)
@@ -40,21 +40,31 @@ y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 81.00)
 
 
 ```{r}
-GD_one_dim(x, y)
+GD_one_dim(x, y, learn_rate = 0.00001, iter = 100, display_step = 10)
 ```
 
+For input and parameters, this function includes: 
 
-This function will also generate three plots (if save_plots = TRUE):
+&ensp;&ensp;&ensp;'x': Independent variable (input data),<br/>
+&ensp;&ensp;&ensp;'y': Dependent variable (target values),<br/>
+&ensp;&ensp;&ensp;'learn_rate': The learning rate for gradient descent, default value '0.00001',<br/>
+&ensp;&ensp;&ensp;'iter': The number of iterations for the gradient descent algorithm, default   '100',<br/>
+&ensp;&ensp;&ensp;'display_step': Defines how often the loss and parameters should be displayed (every '10' iterations by default).
+<br/>
+<br/>
+For output, this function will also generate three plots (if save_plots = TRUE) and return final loss for comparison:
 
-A scatter plot of the data points and the fitted regression line.
-A plot of the loss function as it decreases over the iterations.
-A plot comparing the predicted values against the actual target values.
+1. A scatter plot of the data points and the fitted regression line. As we can see, the original data points ('x', 'y') plots in red and the predicted values ('x', 'pred') plots in blue.<br/>
+2. A plot of the loss function, which plots the loss over the iterations to visualize the convergence of the gradient descent algorithm. Like the example, it decreases over the iterations.<br/>
+3. A plot comparing the predicted values against the actual target values, also showing how close the model predictions are to the actual values.
+<br/>
+
 This function provides insight into how gradient descent adjusts the weights (w) and biases (b) to minimize the mean squared error (MSE).
 
 
 ## Pacakge functions 2 -- multiple-dimensional linear regression
 
-The GD_multi_dim function extends gradient descent to a multi-dimensional setting where there are multiple predictors. Here's an example:
+The GD_multi_dim function extends gradient descent to a multi-dimensional setting where there are multiple predictors. Here's a simple example:
 
 
 ```{r}
@@ -66,14 +76,24 @@ y <- c(145.00, 110.00, 93.00, 116.00, 65.32, 104.00, 118.00, 81.00)
 
 
 ```{r}
-GD_multi_dim(x0, y)
+GD_multi_dim(x0, y, learn_rate = 0.001, iter = 500, display_step = 50)
 ```
 
+For input and parameters, this function includes:
 
-This function will also generate two plots (if save_plots = TRUE):
+&ensp;&ensp;&ensp;'x': Matrix of independent variables (multi-dimensional input data),<br/>
+&ensp;&ensp;&ensp;'y': Dependent variable (target values),<br/>
+&ensp;&ensp;&ensp;'learn_rate': Learning rate for the gradient descent algorithm, default '0.001',<br/>
+&ensp;&ensp;&ensp;'iter': Number of iterations for the gradient descent algorithm, default '500',<br/>
+&ensp;&ensp;&ensp;'display_step': Determines how often the loss is displayed, default every '50' iterations.
+<br/>
+<br/>
+For output, this function will also generate two plots (if save_plots = TRUE) and return final loss for comparison:
 
-A plot of the loss function across the iterations.
-A plot comparing the predicted values against the actual target values for all data points.
+1. A plot of the loss function across the iterations and showing how the loss decreases as the gradient descent progresses.<br/>
+2. A plot comparing the predicted values against the actual target values for all data points. It plots the actual 'y' values and predicted 'pred' values in red and blue, respectively, showing the differences between model predictions and actual values.
+<br/>
+
 By normalizing the input data internally, GD_multi_dim ensures that the gradient descent algorithm performs efficiently across different scales of predictors.
 
 ## Comparison with Linear Models
