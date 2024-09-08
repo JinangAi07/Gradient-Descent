@@ -90,6 +90,7 @@ The **Simplified Process** for this function:
 
 The **Simplified Flowchart** for this function:
 
+![Image text](man/figures/fc1.png)
 
 This function performs one-dimensional linear regression using gradient descent. It iteratively adjusts the weight $w$ and bias $b$ to minimize the loss function. Users can specify the learning rate, the number of iterations, and the display interval. In each iteration, the function computes the model's predictions and loss, and at the end, it visualizes the regression line, the change in loss over iterations, and the difference between the predicted and actual values.
 
