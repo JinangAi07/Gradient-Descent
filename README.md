@@ -138,11 +138,10 @@ W^{(k+1)}~=~W^{(k)}~-~\eta X^T(XW-Y)
 The **Simplified Process** for this function:
 
 1. Data Preparation:
-   * Add a column of 1s to x for the intercept
-   * Normalize the data in x
+   * Normalize the data in $x$
 
 2. Matrix Setup:
-   * Create feature matrix X and target matrix Y
+   * Create feature matrix $X$ and target matrix $Y$
 
 3. Initialization:
    * Set hyperparameters: $learning$ $rate$ and $number$ $of$ $iterations$
@@ -163,9 +162,9 @@ The **Simplified Process** for this function:
 
 The **Simplified Flowchart** for this function:
 
-<div align=center><img src="man/figures/001.png" width="280" height="430" /></div>
+<div align=center><img src="man/figures/002.png" width="280" height="430" /></div>
 
-To better understand the working principle of the *GD_multi_dim* function in this R package, the workflow analysis and flowchart are outlined above. Same as *GD_one_dim* function, the more detailed step-by-step analysis and explanation can be seen in [Gradient.R](R/Gradient.R "Gradient.R") and [Vignettes](vignettes/my-vignette.Rmd "Vignettes").
+To better understand the working principle of the *GD_multi_dim* function in this R package, the workflow analysis and flowchart are outlined above. The working principles of *GD_multi_dim* and *GD_multi_dim* are generally similar. The main difference is that in *GD_multi_dim*, because there is more than one independent variable, normalization of the data and creation of matrices are required before training the model. This difference is also highlighted in the flowchart. Same as *GD_one_dim* function, the more detailed step-by-step analysis and explanation can be seen in [Gradient.R](R/Gradient.R "Gradient.R") and [Vignettes](vignettes/my-vignette.Rmd "Vignettes").
 
 **Summary**
 
