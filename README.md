@@ -162,9 +162,11 @@ The **Simplified Process** for this function:
 
 The **Simplified Flowchart** for this function:
 
-<div align=center><img src="man/figures/002.png" width="280" height="430" /></div>
+<div align=center><img src="man/figures/002.png" width="300" height="450" /></div>
 
-To better understand the working principle of the *GD_multi_dim* function in this R package, the workflow analysis and flowchart are outlined above. The working principles of *GD_multi_dim* and *GD_multi_dim* are generally similar. The main difference is that in *GD_multi_dim*, because there is more than one independent variable, normalization of the data and creation of matrices are required before training the model. This difference is also highlighted in the flowchart. Same as *GD_one_dim* function, the more detailed explanation about parameters and output can be seen in [Vignettes](vignettes/my-vignette.Rmd "Vignettes") and the step-by-step analysis is in [Gradient.R](R/Gradient.R "Gradient.R").
+To better understand the working principle of the *GD_multi_dim* function in this R package, the workflow analysis and flowchart are outlined above. The working principles of *GD_one_dim* and *GD_multi_dim* are generally similar. The main difference is that in *GD_multi_dim*, because there is more than one independent variable, normalization of the data and creation of matrices are required before training the model. This difference is also highlighted in the flowchart. Same as *GD_one_dim* function, the more detailed explanation about parameters and output can be seen in [Vignettes](vignettes/my-vignette.Rmd "Vignettes") and the step-by-step analysis is in [Gradient.R](R/Gradient.R "Gradient.R").
+
+
 **Summary**
 
 This function implements multi-dimensional linear regression for multiple features (variables). After normalizing the data, it uses matrix operations to perform gradient descent, updating the weight matrix $W$. Users can set the learning rate, the number of iterations, and the display interval. The function outputs the change in loss during training and plots the comparison between predicted and actual values.
