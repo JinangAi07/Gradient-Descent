@@ -57,7 +57,7 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
     Loss <- mean((y - pred)^2) / 2
     mse[i + 1] <- Loss
     #'pred': Predictions made by the model using the current values of 'w' and 'b'.
-    #'Loss': Calculates the loss using the mean squared error divided by 2 (standard for squared loss in gradient descent).
+    #'Loss': Calculates the loss using the half of mean squared error (standard for squared loss in gradient descent).
     #'mse[i + 1]': Stores the calculated loss for the current iteration.
 
     ##Display Information:
@@ -150,7 +150,7 @@ GD_multi_dim <- function(x, y, learn_rate = 0.001, iter = 500, display_step = 50
 
 ")
   print("Loss and iteration numbers")
-  #Prints the transformed independent variables matrix 'X' and the dependent variable 'Y' for debugging purposes.
+  #Prints the transformed independent variables matrix 'X' and the dependent variable 'Y'.
 
   ##Initializing Weights:
   set.seed(123)
