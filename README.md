@@ -76,14 +76,16 @@ The **Simplified Process** for this function:
    * Set initial model parameters: $w_0$ , $b_0$
 
 2. Training the model:
-   * Repeat iter times:
+   * Repeat $iter$ times:
      * Calculate gradients (partial derivatives of $w$ and $b$)
      * Update parameters $w$ and $b$
      * Calculate and record the loss (MSE)
      * Periodically display the current iteration's parameters and loss
 
 3. Visualizing the results:
-   * After training, plot a scatterplot, loss graph, and comparison between actual and predicted values
+   * plot scatterplot
+   * Plot loss graph
+   * Plot comparison between actual and predicted values
 
 4. Return:
    * Return the final loss value and the list of losses across all iterations
@@ -132,6 +134,38 @@ then equal to:
 ```math
 W^{(k+1)}~=~W^{(k)}~-~\eta X^T(XW-Y)
 ```
+
+The **Simplified Process** for this function:
+
+1. Data Preparation:
+   * Add a column of 1s to x for the intercept
+   * Normalize the data in x
+
+2. Matrix Setup:
+   * Create feature matrix X and target matrix Y
+
+3. Initialization:
+   * Set hyperparameters: $learning$ $rate$ and $number$ $of$ $iterations$
+   * Set initial model parameters: weight $w_0$ , loss vector $mse$
+
+4. Training the model:
+   * Repeat $iter$ times:
+     * Compute gradients and update weights
+     * Predict values and calculate the loss
+     * Store the loss and print every $display$ _ $step$ iterations
+
+5. Visualizing the results:
+   * Plot the loss over iterations 
+   * Plot comparison between actual and predicted values
+
+6. Return:
+   * Return the final loss value and the list of losses across all iterations
+
+The **Simplified Flowchart** for this function:
+
+<div align=center><img src="man/figures/001.png" width="280" height="430" /></div>
+
+To better understand the working principle of the *GD_one_dim* function in this R package, the workflow analysis and flowchart are outlined above. A more detailed step-by-step analysis and explanation can be seen in [Gradient.R](R/Gradient.R "Gradient.R") and [Vignettes](vignettes/my-vignette.Rmd "Vignettes").
 
 **Summary**
 
