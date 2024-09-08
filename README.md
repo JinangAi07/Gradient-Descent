@@ -68,6 +68,28 @@ w^{(k+1)}~=~w^{(k)}~-~\eta\sum_{i=1}^{n}x_i(wx_i+b-y_i)
 ```math
 b^{(k+1)}~=~b^{(k)}~-~\eta\sum_{i=1}^{n}(wx_i+b-y_i)
 ```
+
+The **Simplified Process** for this function:
+
+1. Initialization:
+   * Set hyperparameters: $learning$ $rate$ and $number$ $of$ $iterations$
+   * Set initial model parameters: $w_0$ , $b_0$
+
+2. Training the model:
+   * Repeat iter times:
+     * Calculate gradients (partial derivatives of $w$ and $b$)
+     * Update parameters $w$ and $b$
+     * Calculate and record the loss (MSE)
+     * Periodically display the current iteration's parameters and loss
+
+3. Visualizing the results:
+   * After training, plot a scatterplot, loss graph, and comparison between actual and predicted values
+
+4. Return:
+   * Return the final loss value and the list of losses across all iterations
+
+
+
 This function performs one-dimensional linear regression using gradient descent. It iteratively adjusts the weight $w$ and bias $b$ to minimize the loss function. Users can specify the learning rate, the number of iterations, and the display interval. In each iteration, the function computes the model's predictions and loss, and at the end, it visualizes the regression line, the change in loss over iterations, and the difference between the predicted and actual values.
 
 ### 2.3 GD_multi_dim Funtion
