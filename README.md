@@ -94,7 +94,7 @@ The **Simplified Flowchart** for this function:
 
 <div align=center><img src="man/figures/001.png" width="280" height="430" /></div>
 
-To better understand the working principle of the *GD_one_dim* function in this R package, the workflow analysis and flowchart are outlined above. The more detailed step-by-step analysis and explanation can be seen in [Gradient.R](R/Gradient.R "Gradient.R") and [Vignettes](vignettes/my-vignette.Rmd "Vignettes").
+To better understand the working principle of the *GD_one_dim* function in this R package, the workflow analysis and flowchart are outlined above. The more detailed explanation about parameters and output can be seen in [Vignettes](vignettes/my-vignette.Rmd "Vignettes") and the step-by-step analysis is in [Gradient.R](R/Gradient.R "Gradient.R").
 
 
 **Summary**
@@ -164,8 +164,7 @@ The **Simplified Flowchart** for this function:
 
 <div align=center><img src="man/figures/002.png" width="280" height="430" /></div>
 
-To better understand the working principle of the *GD_multi_dim* function in this R package, the workflow analysis and flowchart are outlined above. The working principles of *GD_multi_dim* and *GD_multi_dim* are generally similar. The main difference is that in *GD_multi_dim*, because there is more than one independent variable, normalization of the data and creation of matrices are required before training the model. This difference is also highlighted in the flowchart. Same as *GD_one_dim* function, the more detailed step-by-step analysis and explanation can be seen in [Gradient.R](R/Gradient.R "Gradient.R") and [Vignettes](vignettes/my-vignette.Rmd "Vignettes").
-
+To better understand the working principle of the *GD_multi_dim* function in this R package, the workflow analysis and flowchart are outlined above. The working principles of *GD_multi_dim* and *GD_multi_dim* are generally similar. The main difference is that in *GD_multi_dim*, because there is more than one independent variable, normalization of the data and creation of matrices are required before training the model. This difference is also highlighted in the flowchart. Same as *GD_one_dim* function, the more detailed explanation about parameters and output can be seen in [Vignettes](vignettes/my-vignette.Rmd "Vignettes") and the step-by-step analysis is in [Gradient.R](R/Gradient.R "Gradient.R").
 **Summary**
 
 This function implements multi-dimensional linear regression for multiple features (variables). After normalizing the data, it uses matrix operations to perform gradient descent, updating the weight matrix $W$. Users can set the learning rate, the number of iterations, and the display interval. The function outputs the change in loss during training and plots the comparison between predicted and actual values.
@@ -173,11 +172,11 @@ This function implements multi-dimensional linear regression for multiple featur
 Both functions use gradient descent to train the model, making them useful for linear regression tasks with intuitive visualizations to analyze convergence and predictive performance.
 ***
 ## 3. Vignettes and Tests
-This R package also includes two important components: vignettes and tests, which help us better understand and use the package. 
+This R package also includes two important components: vignettes and tests, which help us better understand and use this package. 
 
-In the vignettes, we will learn how the package works through a simple example, as well as the the final output and visualization graphics. 
+In the vignettes, we will learn how the package works through a simple example, as well as a detailed introduction about the input, parameters, final output and visualization graphics in both two functions. 
 
-In the tests, the outputs of this package are compared another widely-used package 'lm', using data from an open dataset in the [Medical Cost Personal Datasets (kaggle.com)](https://www.kaggle.com/datasets/mirichoi0218/insurance). 
+In the tests, to test the validation and accuracy of this package, the outputs will be compared with another widely-used package 'lm', using data from an open dataset in the [Medical Cost Personal Datasets (kaggle.com)](https://www.kaggle.com/datasets/mirichoi0218/insurance). 
 
 ***
 Thank you for reading this introduction, hope you have fun with this r package! :wink:
