@@ -109,7 +109,11 @@ This function implements multi-dimensional linear regression for multiple featur
 Both functions use gradient descent to train the model, making them useful for linear regression tasks with intuitive visualizations to analyze convergence and predictive performance.
 ***
 ## 3. Vignettes and Tests
-This R package also includes two important components: vignettes and tests, which help us better understand and use the package. In the vignettes, we will learn how the package works through a simple example, as well as the the final output and visualization graphics. In the tests, the outputs of this package are compared another widely-used package 'lm', using data from an open dataset in the [Medical Cost Personal Datasets (kaggle.com)](https://www.kaggle.com/datasets/mirichoi0218/insurance). 
+This R package also includes two important components: vignettes and tests, which help us better understand and use the package. 
+
+In the vignettes, we will learn how the package works through a simple example, as well as the the final output and visualization graphics. 
+
+In the tests, the outputs of this package are compared another widely-used package 'lm', using data from an open dataset in the [Medical Cost Personal Datasets (kaggle.com)](https://www.kaggle.com/datasets/mirichoi0218/insurance). 
 
 ***
 Thank you for reading this introduction, hope you have fun with this r package! :wink:
