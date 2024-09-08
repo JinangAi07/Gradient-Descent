@@ -20,7 +20,7 @@ with:
 
 Through multiple iterations, gradient descent gradually finds the parameter values that minimize the loss function, thus improving the accuracy of the model's predictions.
 
-.<div align=center><img src="man/figures/gd1.png" width="600" height="350" /></div>
+<div align=center><img src="man/figures/gd1.png" width="600" height="350" /></div>
 
 The diagram illustrates this process. The blue curve represents the contour lines (level sets) and the arrows indicate the direction opposite to the gradient at that point. (Note: The gradient direction at a point is perpendicular to the contour lines passing through that point). By following the gradient descent direction, we will eventually reach to the bottom, which is the point where the loss function J is minimized.
 ***
@@ -90,7 +90,12 @@ The **Simplified Process** for this function:
 
 The **Simplified Flowchart** for this function:
 
-.<div align=center><img src="man/figures/fc01.png" width="280" height="430" /></div>
+<div align=center><img src="man/figures/fc01.png" width="280" height="430" /></div>
+
+To better understand the working principle of the *GD_one_dim* function in this R package, the workflow analysis and flowchart are outlined above. A more detailed step-by-step analysis and explanation can be seen in [Gradient.R](R/Gradient.R "Gradient.R") and [Vignettes](vignettes/my-vignette.Rmd "Vignettes").
+
+
+**Summary**
 
 This function performs one-dimensional linear regression using gradient descent. It iteratively adjusts the weight $w$ and bias $b$ to minimize the loss function. Users can specify the learning rate, the number of iterations, and the display interval. In each iteration, the function computes the model's predictions and loss, and at the end, it visualizes the regression line, the change in loss over iterations, and the difference between the predicted and actual values.
 
@@ -127,6 +132,8 @@ then equal to:
 ```math
 W^{(k+1)}~=~W^{(k)}~-~\eta X^T(XW-Y)
 ```
+
+**Summary**
 
 This function implements multi-dimensional linear regression for multiple features (variables). After normalizing the data, it uses matrix operations to perform gradient descent, updating the weight matrix $W$. Users can set the learning rate, the number of iterations, and the display interval. The function outputs the change in loss during training and plots the comparison between predicted and actual values.
 
