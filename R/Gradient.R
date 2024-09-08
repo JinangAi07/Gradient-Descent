@@ -14,14 +14,12 @@
 #' GD_one_dim(x, y, display_step = 5)
 #' GD_one_dim(x, y, iter = 50, display_step = 5)
 #' @export
-
-##Function Definition and Parameters:
 GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10){
-  #'x': Independent variable (input data).
-  #'y': Dependent variable (target values).
-  #'learn_rate': The learning rate for gradient descent, default value '0.00001'.
-  #'iter': The number of iterations for the gradient descent algorithm, default '100'.
-  #'display_step': Defines how often the loss and parameters should be displayed (every '10' iterations by default).
+  # 'x': Independent variable (input data).
+  # 'y': Dependent variable (target values).
+  # 'learn_rate': The learning rate for gradient descent, default value '0.00001'.
+  # 'iter': The number of iterations for the gradient descent algorithm, default '100'.
+  # 'display_step': Defines how often the loss and parameters should be displayed (every '10' iterations by default).
 
   ##Seed Initialization:
   set.seed(123)
@@ -30,12 +28,12 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
   ##Initialization of Parameters:
   w <- 0.5
   b <- 0.5
-  #'w': Weight for the linear model (starting at '0.5').
-  #'b': Bias term (starting at '0.5').
+  # 'w': Weight for the linear model (starting at '0.5').
+  # 'b': Bias term (starting at '0.5').
 
   ##Mean Squared Error (MSE) Storage:
   mse <- numeric(iter + 1)
-  #'mse': Initializes a numeric vector to store the loss at each iteration. The length of the vector is 'iter + 1' because it includes the initial loss (at iteration '0').
+  # 'mse': Initializes a numeric vector to store the loss at each iteration. The length of the vector is 'iter + 1' because it includes the initial loss (at iteration '0').
 
   ##Training Loop:
   for (i in 0:iter) {
@@ -44,8 +42,8 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
     ##Gradient Calculation:
     dL_dw <- mean(x * (w * x + b - y))
     dL_db <- mean(w * x + b - y)
-    #'dL_dw': The gradient of the loss function with respect to the weight 'w'. It measures how much 'w' should be adjusted.
-    #'dL_db': The gradient of the loss function with respect to the bias 'b'. It measures how much 'b' should be adjusted.
+    # 'dL_dw': The gradient of the loss function with respect to the weight 'w'. It measures how much 'w' should be adjusted.
+    # 'dL_db': The gradient of the loss function with respect to the bias 'b'. It measures how much 'b' should be adjusted.
 
     ##Update Parameters:
     w <- w - learn_rate * dL_dw
@@ -56,9 +54,9 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
     pred <- w * x + b
     Loss <- mean((y - pred)^2) / 2
     mse[i + 1] <- Loss
-    #'pred': Predictions made by the model using the current values of 'w' and 'b'.
-    #'Loss': Calculates the loss using the half of mean squared error (standard for squared loss in gradient descent).
-    #'mse[i + 1]': Stores the calculated loss for the current iteration.
+    # 'pred': Predictions made by the model using the current values of 'w' and 'b'.
+    # 'Loss': Calculates the loss using the half of mean squared error (standard for squared loss in gradient descent).
+    # 'mse[i + 1]': Stores the calculated loss for the current iteration.
 
     ##Display Information:
     if (i %% display_step == 0) {
@@ -111,13 +109,12 @@ GD_one_dim <- function(x, y, learn_rate = 0.00001, iter = 100, display_step = 10
 #' GD_multi_dim(x, y, iter = 200)
 #' GD_multi_dim(x, y, iter = 300, display_step = 25)
 #' @export
-##Function Definition and Parameters:
 GD_multi_dim <- function(x, y, learn_rate = 0.001, iter = 500, display_step = 50){
-  #'x': Matrix of independent variables (multi-dimensional input data).
-  #'y': Dependent variable (target values).
-  #'learn_rate': Learning rate for the gradient descent algorithm, default '0.001'.
-  #'iter': Number of iterations for the gradient descent algorithm, default '500'.
-  #'display_step': Determines how often the loss is displayed, default every '50' iterations.
+  # 'x': Matrix of independent variables (multi-dimensional input data).
+  # 'y': Dependent variable (target values).
+  # 'learn_rate': Learning rate for the gradient descent algorithm, default '0.001'.
+  # 'iter': Number of iterations for the gradient descent algorithm, default '500'.
+  # 'display_step': Determines how often the loss is displayed, default every '50' iterations.
 
   ##Adding Bias Column:
   x0 <- rep(1, nrow(x))
@@ -174,8 +171,8 @@ GD_multi_dim <- function(x, y, learn_rate = 0.001, iter = 500, display_step = 50
     PRED <- X %*% W
     Loss <- mean((Y - PRED)^2) / 2
     mse <- c(mse, Loss)
-    #'PRED': Calculates the predictions using the current weight matrix 'W'.
-    #'Loss': Computes the mean squared error loss and divides by 2 (standard in gradient descent for squared loss).
+    # 'PRED': Calculates the predictions using the current weight matrix 'W'.
+    # 'Loss': Computes the mean squared error loss and divides by 2 (standard in gradient descent for squared loss).
     #Stores the current iteration's loss in the 'mse' vector.
 
     ##Display Loss:
