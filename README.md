@@ -20,7 +20,7 @@ with:
 
 Through multiple iterations, gradient descent gradually finds the parameter values that minimize the loss function, thus improving the accuracy of the model's predictions.
 
-![Image text](man/figures/gd1.png)
+.<div align=center><img src="man/figures/gd1.png" width="600" height="350" /></div>
 
 The diagram illustrates this process. The blue curve represents the contour lines (level sets) and the arrows indicate the direction opposite to the gradient at that point. (Note: The gradient direction at a point is perpendicular to the contour lines passing through that point). By following the gradient descent direction, we will eventually reach to the bottom, which is the point where the loss function J is minimized.
 ***
@@ -90,7 +90,7 @@ The **Simplified Process** for this function:
 
 The **Simplified Flowchart** for this function:
 
-![Image text](man/figures/fc1.png)
+.<div align=center><img src="man/figures/fc01.png" width="280" height="430" /></div>
 
 This function performs one-dimensional linear regression using gradient descent. It iteratively adjusts the weight $w$ and bias $b$ to minimize the loss function. Users can specify the learning rate, the number of iterations, and the display interval. In each iteration, the function computes the model's predictions and loss, and at the end, it visualizes the regression line, the change in loss over iterations, and the difference between the predicted and actual values.
 
